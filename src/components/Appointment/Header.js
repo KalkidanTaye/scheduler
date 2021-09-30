@@ -1,5 +1,4 @@
 import React from "react";
-import "stories/index.js";
 
 export default function Header(props) {
   return (
