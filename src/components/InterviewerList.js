@@ -12,7 +12,7 @@ export default function Application(props) {
         name={parseInterviewer.name}
         avatar={parseInterviewer.avatar}
         selected={parseInterviewer.id === interviewer}
-        setInterviewer={(event) => props.setInterviewer(parseInterviewer.id)}
+        setInterviewer={(event) => setInterviewer(parseInterviewer.id)}
       />
     ));
   }
