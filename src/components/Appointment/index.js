@@ -7,13 +7,28 @@ import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
+  //REFACTOR
+  const { id, time, interview, interviewers, bookInterview, cancelInterview } =
+    props;
+  // console.log("interviewers", props.interviewers);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
-
+  const SAVING = "SAVING";
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer,
+    };
+    transition(SAVING, true);
+    bookInterview(props.id, interview).then(() => {
+      transition(SHOW);
+    });
+  }
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -22,6 +37,7 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          interviewers={props.interviewers}
         />
       )}
       {mode === CREATE && (
@@ -29,6 +45,7 @@ export default function Appointment(props) {
           interviewer=""
           interviewers={props.interviewers}
           onCancel={() => back()}
+          onSave={save}
         />
       )}
     </article>

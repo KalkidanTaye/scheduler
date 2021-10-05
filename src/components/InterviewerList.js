@@ -2,7 +2,7 @@ import React from "react";
 import InterviewerListItem from "./InterviewerListItem";
 import "components/InterviewerList.scss";
 
-export default function Application(props) {
+export default function InterviewerList(props) {
   const { interviewers, interviewer, setInterviewer } = props;
   let parseInterviewerArray = [];
   if (interviewers) {

@@ -17,7 +17,21 @@ export default function Application(props) {
     interviewers: {},
   });
   function bookInterview(id, interview) {
-    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
+      setState({
+        ...state,
+        appointments,
+      });
+    });
   }
 
   useEffect(() => {
@@ -42,29 +56,13 @@ export default function Application(props) {
     setState((prev) => {
       return { ...prev, day };
     });
-  const mappedAppointments = getAppointmentsForDay(state, state.day).map(
-    (appointment) => {
-      return (
-        <Appointment
-          key={appointment.id}
-          {...appointment}
-          // {...bookInterview()}
-        />
-      );
-    }
-  );
-  // console.log("appointments:", mappedAppointments);
-  // const mappedInterviewers = getInterviewersForDay(state, state.day).map(
-  //   (interviewer) => {
-  //     return <Appointment {...interviewer} />;
-  //   }
-  // );
-  // console.log("interviewers", mappedInterviewers);
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const dailyInterviewers = getInterviewersForDay(state, state.day);
-  console.log("interviewers", dailyInterviewers);
-  const schedule = dailyAppointments.map((appointment) => {
+
+  const appointments = getAppointmentsForDay(state, state.day);
+
+  // console.log("interviewers", dailyInterviewers);
+  const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
+    const interviewers = getInterviewersForDay(state, state.day);
 
     return (
       <Appointment
@@ -72,7 +70,8 @@ export default function Application(props) {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
-        interviewers={dailyInterviewers}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
@@ -101,6 +100,7 @@ export default function Application(props) {
         {/* {mappedAppointments}
         {mappedInterviewers} */}
         {schedule}
+
         <Appointment key="last" time="5pm" />
       </section>
     </main>
