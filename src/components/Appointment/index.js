@@ -6,10 +6,6 @@ import "components/Appointment/style.scss";
 import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 
-const EMPTY = "EMPTY";
-const SHOW = "SHOW";
-const CREATE = "CREATE";
-
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
