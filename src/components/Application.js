@@ -33,6 +33,13 @@ export default function Application(props) {
       });
     });
   }
+  const cancelInterview = (id) => {
+    const appointment = { ...state.appointments[id] };
+
+    appointment[id] = null;
+
+    return axios.delete(`/api/appointments/${id}`);
+  };
 
   useEffect(() => {
     const daysURL = "/api/days";
@@ -58,8 +65,6 @@ export default function Application(props) {
     });
 
   const appointments = getAppointmentsForDay(state, state.day);
-
-  // console.log("interviewers", dailyInterviewers);
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
@@ -72,6 +77,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
