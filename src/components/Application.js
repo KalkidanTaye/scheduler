@@ -52,11 +52,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         <DayList />
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-        {/* {mappedAppointments}
-        {mappedInterviewers} */}
         {schedule}
-
         <Appointment key="last" time="5pm" />
       </section>
     </main>
