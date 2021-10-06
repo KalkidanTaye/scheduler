@@ -30,7 +30,14 @@ export default function useApplicationData() {
 
     appointment[id] = null;
 
-    return axios.delete(`/api/appointments/${id}`);
+    return axios.delete(`/api/appointments/${id}`).then(() => {
+      setState((prev) => ({
+        ...prev,
+        appointments: {
+          ...prev.appointments,
+        },
+      }));
+    });
   }
 
   useEffect(() => {
