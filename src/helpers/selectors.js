@@ -21,5 +21,6 @@ export function getInterviewersForDay(state, day) {
   const interviewerArray = !filteredDays
     ? []
     : filteredDays.interviewers.map((element) => state.interviewers[element]);
+
   return interviewerArray;
 }
