@@ -11,6 +11,8 @@ This application is built using ltechnologies like React, Storybook, Jest and Cy
 
 !["Saving Appointments"](https://github.com/KalkidanTaye/scheduler/blob/master/docs/saving-appointment.png)
 
+!["Display New Appointment"](https://github.com/KalkidanTaye/scheduler/blob/master/docs/display-new-appointment.png)
+
 !["Delete Appointments"](https://github.com/KalkidanTaye/scheduler/blob/master/docs/delete-appointment.png)
 
 !["Deleting Appointments"](https://github.com/KalkidanTaye/scheduler/blob/master/docs/deleting-appointment.png)
