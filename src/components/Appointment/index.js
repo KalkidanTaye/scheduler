@@ -10,10 +10,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 
 export default function Appointment(props) {
-  //REFACTOR
-  const { id, time, interview, interviewers, bookInterview, cancelInterview } =
-    props;
-  // console.log("interviewers", props.interviewers);
+  const { id, bookInterview, cancelInterview } = props;
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
