@@ -2,12 +2,12 @@ import React from "react";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
-import "components/Appointment/style.scss";
-import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import useVisualMode from "hooks/useVisualMode";
+import "components/Appointment/style.scss";
 
 export default function Appointment(props) {
   const { id, bookInterview, cancelInterview } = props;
