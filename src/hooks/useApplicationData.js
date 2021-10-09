@@ -9,6 +9,8 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
+  //update spots
+
   const spotsRemaining = (day, appointments) => {
     const dayFound = state.days.find((dayObj) => dayObj.name === day);
     const apptList = dayFound.appointments.map((appId) => appointments[appId]);
@@ -17,6 +19,8 @@ export default function useApplicationData() {
     ).length;
     return numOfSpots;
   };
+
+  //create appointment
 
   function bookInterview(id, interview) {
     const appointment = {
@@ -46,6 +50,8 @@ export default function useApplicationData() {
       });
     });
   }
+
+  // cancel appointment
   function cancelInterview(id) {
     const appointment = { ...state.appointments[id] };
 
